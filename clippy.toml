@@ -1,0 +1,4 @@
+# this file can be used to bypass any particular lint errors/warning across the
+# entire project.
+# eg.
+# #[allow(clippy::lint_name)]
