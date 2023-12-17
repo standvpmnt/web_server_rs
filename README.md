@@ -2,6 +2,10 @@
 
 This template is based on the setup provided in Zero2Prod with a few tweaks to
 the dependencies.
+This repository is planned to have the template be available for 2 frameworks
+actix-web because that is the default in the Zero2Prod book and axum as the
+second web-server. actix-web version is available in the main branch and the
+axum version is maintained in the `axum` branch.
 
 ## Basics
 
