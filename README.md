@@ -72,5 +72,42 @@ be available on the system to work. To get the database created and migrated
 update the default values or set the environment vriables indicated on line
 number 18 through 25 in [init_db.sh](./scripts/init_db.sh) file.
 
-After updating the appropriate lines and/or setting the environment variables
-run the script by running `./scripts/init_db.sh` in shell.
+After updating the appropriate lines and/or setting the environment variables,
+make sure the script has execute permission by running `chmod +x ./scripts/init_db.sh`
+and then run the script by running `./scripts/init_db.sh` in shell.
+
+Presently, this script may not be able to pick up env variables which you set
+using the `export` command in the shell where the script is being executed, this
+is probably due to the shebang at the top, this is indicating usr/bin/env
+
+_NOTE_
+This project uses sqlx and it is assumed that `sqlx-cli` is available on the
+system to do the development related actions.
+
+#### Creating a migration
+To create a migration execute the command, `sqlx migrate add <description>`,
+this will create a simple migration file, if `up` and `down` style of migration
+files is preferred the command to be executed is instead
+`sqlx migrate add -r <description>`, _note only style either single migration or
+up and down pattern can be used_
+
+### Dockerfile
+After creating a project with this template, update the [Dockerfile](./Dockerfile)
+with the following:
+1. Correct rust version based on the one being used for development (line# 1)
+2. Correct binary name as indicated in the Cargo.toml file, this name (line# 14)
+should match one of the names defined in binary targets in [Cargo.toml](./Cargo.toml)
+3. Update the name of the binary to be copied from the builder step, this should
+match the name specified in point 2 above and then the name of the binary that
+will be executed in the container on line#23 and line#26.
+
+### Commented files
+There is a file called email_client.rs which is included in the repository for
+reference. This is not a part of the code required to get this setup running.
+However, this file is included as it represents an important pattern which is
+to be used when working with the application of providing a client as an
+argument to the `Application` at the time of startup. The way to wire this
+client to the application is included in the code in the [startup.rs file](./src/startup.rs)
+and is also commented out for easier removal in the future.
+Similarly, in the tests folder, there is a commented file [newsletter.rs](./tests/api/newsletter.rs)
+to show the pattern to be used when writing tests.

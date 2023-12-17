@@ -12,9 +12,11 @@ path = "src/main.rs"
 [dependencies]
 actix-web = "4.4.0"
 anyhow = "1.0.75"
+argon2 = "0.5.2"
 chrono = { version = "0.4.31", features = ["clock"] }
 claim = "0.5.0"
 config = { version = "0.13.4", features = ["toml"] }
+rand = "0.8.5"
 reqwest = { version = "0.11.22", features = ["json", "rustls-tls"] }
 secrecy = { version = "0.8.0", features = ["serde"] }
 serde = { version = "1.0.193", features = ["derive"] }
@@ -27,6 +29,8 @@ tracing-log = "0.2.0"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 uuid = { version = "1.6.1", features = ["v4", "serde"] }
 validator = "0.16.1"
+thiserror = "1.0.51"
+tokio = { version = "1.35.0", features = ["macros", "rt-multi-thread", "rt"] }
 [dependencies.sqlx]
 version = "0.7.3"
 default-features = false
@@ -38,8 +42,6 @@ features = [
     "chrono",
     "migrate"
 ]
-thiserror = "1.0.51"
-tokio = { version = "1.35.0", features = ["macros", "rt-multi-thread", "rt"] }
 
 [dev-dependencies]
 fake = "2.9.1"

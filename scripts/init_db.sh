@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# note this is not launching in the bash, env should be in the env of the
+# current shell
 set -x
 set -eo pipefail
 
