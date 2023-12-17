@@ -58,3 +58,19 @@ provided in the Zero2Prod book (reference pg. 10 "Ready-to-go CI pipelines").
 
 
 ## Setup
+
+### Database
+The project relies on a postgres database to be running, here there are 2
+approaches to make it work.
+1. If there is a postgres server running, the credentials for connecting to
+the server can be defined as environment variables indicated on line number 18
+through 25 in [init_db.sh](./scripts/init_db.sh) file, and ensure to set the
+`SKIP_DOCKER` environment variable indicated on line number 28 to any value.
+2. If there is no postgres server running, the script will start a postgres
+container using docker, hence this step requires a pre-requisite of docker to
+be available on the system to work. To get the database created and migrated
+update the default values or set the environment vriables indicated on line
+number 18 through 25 in [init_db.sh](./scripts/init_db.sh) file.
+
+After updating the appropriate lines and/or setting the environment variables
+run the script by running `./scripts/init_db.sh` in shell.
